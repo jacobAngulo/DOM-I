@@ -90,6 +90,17 @@ contactInfo[2].textContent = siteContent['contact']['email']
 let footerContent = document.querySelector('footer p');
 footerContent.textContent = siteContent['footer']['copyright'];
 
+// style 
+
+let newNavItem = document.createElement('a');
+newNavItem.textContent = 'wakeNjake';
+document.querySelector('nav').prepend(newNavItem)
+
+topNavMenu.forEach((element) => {
+  element.style.color = 'green';
+})
+
+
 
 
 
