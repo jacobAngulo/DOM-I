@@ -64,7 +64,7 @@ ctaImage.setAttribute('src', siteContent['cta']['img-src']);
 
 // main content
 let mainContentImage = document.getElementById('middle-img');
-mainContentImage.setAttribute('src', siteContent['main-content']['middle-img-src'])
+mainContentImage.setAttribute('src', siteContent['main-content']['middle-img-src']);
 let mainContentH4 = document.querySelectorAll('.main-content h4');
 let mainContentP = document.querySelectorAll('.main-content p');
 mainContentH4[0].textContent = siteContent['main-content']['features-h4'];
@@ -82,23 +82,67 @@ mainContentP[4].textContent = siteContent['main-content']['vision-content'];
 let contactH4 = document.querySelector('.contact h4');
 contactH4.textContent = siteContent['contact']['contact-h4'];
 let contactInfo = document.querySelectorAll('.contact p');
-contactInfo[0].textContent = siteContent['contact']['address']
-contactInfo[1].textContent = siteContent['contact']['phone']
-contactInfo[2].textContent = siteContent['contact']['email']
+contactInfo[0].textContent = siteContent['contact']['address'];
+contactInfo[1].textContent = siteContent['contact']['phone'];
+contactInfo[2].textContent = siteContent['contact']['email'];
 
 // footer
 let footerContent = document.querySelector('footer p');
 footerContent.textContent = siteContent['footer']['copyright'];
 
-// style 
+// just for fun
+class NavBarCostructor {
+  constructor(input){
+    this.aTag = document.createElement('a');
+  }
 
-let newNavItem = document.createElement('a');
-newNavItem.textContent = 'wakeNjake';
-document.querySelector('nav').prepend(newNavItem)
+  newNavElement(input) {
+    let emptyIndexes = [];
+    for(let i = 0; i < topNavMenu.length; i++) {
+      if(topNavMenu[i] == '') {
+        emptyIndexes.push(i);
+      }
+    }
+    if(emptyIndexes.length < 1) {
+      this.aTag.textContent = input;
+      document.querySelector('nav').prepend(this.aTag);
+    } else {
+      let firstEmptyElement = emptyIndexes[0];
+      topNavMenu[firstEmptyElement].textContent = input;
+    }
+  }
+;}
 
-topNavMenu.forEach((element) => {
-  element.style.color = 'green';
-})
+let test1 = new NavBarCostructor;
+test1.newNavElement('testytest');
+
+let test2 = new NavBarCostructor;
+test2.newNavElement('testytest2');
+
+
+// fancy btn i copied from mdn
+var btn = document.querySelector('button');
+
+function random(number) {
+  return Math.floor(Math.random()*(number+1));
+};
+
+btn.onclick = function() {
+  var rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+  document.body.style.backgroundColor = rndCol;
+};
+
+// stylez
+let pTagStylez = document.querySelectorAll('p');
+
+pTagStylez.forEach((element) => {
+  element.style.color = 'salmon';
+  element.style.fontSize = '20px';
+  element.style.width = '90px';
+  element.style.marginLeft = '10px';
+  element.style.paddingLeft = '20px';
+});
+
 
 
 
